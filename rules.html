@@ -84,8 +84,7 @@
       max-width: 1200px;
       display: flex;
       align-items: flex-start;
-      gap: 3rem; /* increased gap for more right spacing */
-      justify-content: flex-start;
+      gap: 2rem;
     }
 
     h1.page-title {
@@ -145,16 +144,17 @@
       border-radius: 10px;
     }
 
-    /* Image styles - slide down from top + float + bigger size + shifted right */
+    /* Image styles - slide down from top + float + bigger size */
     .skin-image {
-      width: 560px; /* bigger size */
+      width: 480px;
       max-width: 100%;
       height: auto;
       user-select: none;
       animation: slideDownFromTop 1s ease forwards, float 4s ease-in-out 1s infinite;
+      box-shadow: none;
+      border-radius: 0;
       flex-shrink: 0;
-      align-self: center; /* vertical center */
-      margin-left: 20px; /* shifted slightly right */
+      align-self: center; /* vertically center image in flex container */
     }
 
     @keyframes slideDownFromTop {
@@ -186,10 +186,9 @@
         max-width: 100%;
       }
       .skin-image {
-        width: 420px;
+        width: 360px;
         margin-top: 2rem;
         animation: slideDownFromTop 1s ease forwards, float 4s ease-in-out 1s infinite;
-        margin-left: 0;
       }
       h1.page-title {
         font-size: 2rem;
@@ -205,9 +204,8 @@
         padding: 1rem 1rem 2rem 1rem;
       }
       .skin-image {
-        width: 300px;
+        width: 280px;
         margin-top: 1.5rem;
-        margin-left: 0;
       }
     }
   </style>
@@ -269,4 +267,17 @@
         <h2>7. Keep Builds Appropriate</h2>
         <ul>
           <li>No offensive, explicit, or inappropriate builds.</li>
-          <li>Respect the server theme and community
+          <li>Respect the server theme and community guidelines.</li>
+        </ul>
+
+        <h2>8. Have Fun!</h2>
+        <ul>
+          <li>Enjoy your time on VoidMC Network and help build a positive community.</li>
+        </ul>
+      </section>
+    </div>
+
+    <img src="notz.png" alt="Player Skin" class="skin-image" />
+  </main>
+</body>
+</html>

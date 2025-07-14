@@ -7,6 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
+    /* Reset and base */
     body, html {
       margin: 0; padding: 0; height: 100%;
       font-family: 'Inter', sans-serif;
@@ -14,7 +15,10 @@
       color: #33F2FA;
       overflow-x: hidden;
       position: relative;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
+
     /* Sidebar (left) */
     aside.left-sidebar {
       position: fixed;
@@ -27,6 +31,7 @@
       justify-content: space-between;
       padding: 1rem 0;
       z-index: 20;
+      transition: transform 0.3s ease;
     }
     aside.left-sidebar .sidebar-link {
       color: #33F2FA;
@@ -40,6 +45,7 @@
       align-items: center;
       font-size: 1.2rem;
       text-decoration: none;
+      transition: color 0.3s ease;
     }
     aside.left-sidebar .sidebar-link .tooltip {
       display: none;
@@ -67,7 +73,7 @@
     .back-home {
       position: fixed;
       top: 20px;
-      left: 80px; /* adjusted from sidebar width */
+      left: 80px; /* from sidebar width + margin */
       color: #33F2FA;
       font-weight: 700;
       font-size: 1rem;
@@ -85,7 +91,7 @@
       text-decoration: underline;
     }
 
-    /* Skin container full right as background */
+    /* Skin container fixed right with animation */
     .skin-container {
       position: fixed;
       top: 2cm;
@@ -100,6 +106,7 @@
       overflow: hidden;
       border-radius: 0 0 0 20px;
       filter: drop-shadow(0 0 20px #33F2FA);
+      background: transparent;
     }
     .skin-container img {
       width: 100%;
@@ -123,7 +130,7 @@
     main.content-area {
       position: fixed;
       top: 50%;
-      right: 3.5cm; /* leave some space from right edge (skin) */
+      right: 3.5cm; /* leave space from skin on right */
       transform: translateY(-50%);
       background: rgba(20,29,38,0.85);
       backdrop-filter: blur(20px);
@@ -136,6 +143,7 @@
       gap: 1.8rem;
       user-select: none;
       z-index: 15;
+      transition: width 0.3s ease;
     }
 
     main.content-area h2 {
@@ -165,7 +173,7 @@
       align-items: center;
       gap: 0.8rem;
       justify-content: center;
-      transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+      transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 0.3s;
     }
     .vote-button:hover {
       background: #33F2FA;
@@ -177,37 +185,102 @@
       font-size: 1.3rem;
     }
 
-    /* Responsive */
+    /* --- Responsive Styles --- */
+
+    /* Medium screens (tablets, small laptops) */
     @media (max-width: 1024px) {
-      main.content-area {
-        width: 280px;
-        padding: 1.5rem 2rem;
-        right: 2.5cm;
+      aside.left-sidebar {
+        width: 48px;
+      }
+      .back-home {
+        left: 60px;
+        font-size: 0.9rem;
+        top: 15px;
       }
       .skin-container {
         width: 320px;
-        max-width: 20vw;
+        max-width: 30vw;
+        top: 1.5cm;
+        bottom: 1.5cm;
+      }
+      main.content-area {
+        right: 2.7cm;
+        width: 280px;
+        padding: 1.8rem 2rem;
+        font-size: 0.95rem;
+      }
+      main.content-area h2 {
+        font-size: 1.6rem;
+      }
+      .vote-button {
+        font-size: 1rem;
+        padding: 0.7rem 1rem;
+      }
+      .vote-button i {
+        font-size: 1.1rem;
       }
     }
+
+    /* Small screens (phones, narrow tablets) */
     @media (max-width: 768px) {
       aside.left-sidebar {
         display: none;
       }
       .back-home {
-        left: 20px;
+        left: 15px;
         top: 10px;
+        font-size: 0.9rem;
       }
       main.content-area {
         position: relative;
         width: 90vw;
         max-width: 400px;
-        margin: 4rem auto 2rem auto;
+        margin: 5rem auto 2rem auto;
         right: auto;
         transform: none;
         border-radius: 16px;
+        padding: 1.5rem 2rem;
+        font-size: 1rem;
+        box-shadow: 0 0 20px #33F2FA;
+      }
+      main.content-area h2 {
+        font-size: 1.7rem;
+      }
+      .vote-buttons {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .vote-button {
+        font-size: 1.1rem;
+        padding: 0.75rem 1.5rem;
+      }
+      .vote-button i {
+        font-size: 1.2rem;
       }
       .skin-container {
-        display: none;
+        display: none; /* hide skin on mobile for space */
+      }
+    }
+
+    /* Very small phones */
+    @media (max-width: 400px) {
+      .back-home {
+        font-size: 0.85rem;
+        gap: 4px;
+      }
+      main.content-area {
+        width: 95vw;
+        padding: 1.2rem 1.5rem;
+      }
+      main.content-area h2 {
+        font-size: 1.5rem;
+      }
+      .vote-button {
+        font-size: 1rem;
+        padding: 0.6rem 1rem;
+      }
+      .vote-button i {
+        font-size: 1rem;
       }
     }
   </style>
@@ -256,7 +329,7 @@
   </main>
 
   <section class="skin-container" aria-label="Minecraft Skin _NoTzeR_">
-    <img src="body-removebg-preview.png" alt="_NoTzeR Minecraft Skin" draggable="false" loading="lazy" />
+    <img src="https://mc-heads.net/body/_NoTzeR_/200.png" alt="Minecraft player skin for user _NoTzeR_" />
   </section>
 </body>
 </html>

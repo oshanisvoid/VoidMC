@@ -112,30 +112,69 @@
       filter: drop-shadow(0 0 5px rgba(25, 199, 254, 0.7));
     }
 
-    @media (max-width: 1024px) {
-      main.content-area {
-        padding: 2rem;
-      }
-      h2.section-title {
-        font-size: 1.75rem;
-      }
-      p.description {
-        font-size: 1.05rem;
-      }
-    }
+/* Existing styles remain unchanged */
 
-    @media (max-width: 640px) {
-      aside.left-sidebar {
-        width: 48px;
-      }
-      main.content-area {
-        margin-left: 48px;
-        padding: 1.5rem;
-      }
-      h2.section-title {
-        font-size: 1.5rem;
-      }
-      p.description {
-        font-size: 1rem;
-      }
-    }
+/* --- New Responsive Improvements --- */
+
+/* Small tablets and larger phones */
+@media (max-width: 768px) {
+  aside.left-sidebar {
+    width: 48px;
+  }
+  main.content-area {
+    margin-left: 48px;
+    padding: 1.5rem 2rem;
+  }
+  h2.section-title {
+    font-size: 1.6rem;
+  }
+  p.description {
+    font-size: 1rem;
+  }
+}
+
+/* Phones */
+@media (max-width: 480px) {
+  aside.left-sidebar {
+    position: fixed;
+    width: 48px;
+    bottom: auto;
+    top: 0;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    /* Optionally hide sidebar or make it toggleable */
+  }
+
+  main.content-area {
+    margin-left: 48px;
+    padding: 1rem 1.5rem;
+    min-height: auto;
+  }
+
+  h2.section-title {
+    font-size: 1.4rem;
+  }
+
+  p.description {
+    font-size: 0.95rem;
+    padding: 0 0.5rem;
+  }
+}
+
+/* Very small devices (e.g. small phones) */
+@media (max-width: 360px) {
+  aside.left-sidebar {
+    width: 40px;
+  }
+  main.content-area {
+    margin-left: 40px;
+    padding: 0.8rem 1rem;
+  }
+  h2.section-title {
+    font-size: 1.2rem;
+  }
+  p.description {
+    font-size: 0.9rem;
+  }
+}

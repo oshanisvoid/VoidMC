@@ -74,7 +74,7 @@
       margin-left: 64px;
       padding: 2rem 3rem 4rem;
       min-height: 100vh;
-      max-width: calc(100vw - 64px - 280px); /* leave space for skin */
+      max-width: calc(100vw - 64px - 350px); /* leave more space for bigger skin */
       position: relative;
       z-index: 10;
       backdrop-filter: blur(15px);
@@ -103,50 +103,54 @@
       text-shadow: 0 0 6px rgba(0,0,0,0.4);
     }
 
+    /* Sleek smaller vote buttons */
     .vote-buttons {
       display: flex;
       justify-content: center;
-      gap: 2rem;
+      gap: 1.25rem;
       flex-wrap: wrap;
       margin-top: 2rem;
     }
 
     .vote-button {
-      background: rgba(51, 242, 250, 0.15);
-      border: 2px solid #33F2FA;
+      background: rgba(51, 242, 250, 0.1);
+      border: 1.8px solid #33F2FA;
       color: #33F2FA;
-      font-weight: 700;
-      font-size: 1.25rem;
-      padding: 1.2rem 2.5rem;
-      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1.05rem;
+      padding: 0.75rem 1.8rem;
+      border-radius: 10px;
       cursor: pointer;
       text-decoration: none;
-      box-shadow: 0 0 15px rgba(51, 242, 250, 0.7);
-      transition: all 0.3s ease;
+      box-shadow: 0 0 12px rgba(51, 242, 250, 0.55);
+      transition: all 0.25s ease;
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 0.8rem;
       user-select: none;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 0.02em;
     }
 
     .vote-button:hover {
       background: #33F2FA;
       color: #0f0c29;
-      box-shadow: 0 0 25px #33F2FA;
+      box-shadow: 0 0 22px #33F2FA;
     }
 
     .vote-button i {
-      font-size: 1.6rem;
+      font-size: 1.3rem;
+      line-height: 1;
     }
 
     /* Minecraft skin container */
     .skin-container {
       position: fixed;
       top: 50%;
-      right: 150px; /* Adjust to place between voting and right edge */
+      right: 100px; /* Adjusted for bigger skin */
       transform: translateY(-50%);
-      height: 320px;
-      width: 160px;
+      height: 400px;  /* Increased size */
+      width: auto;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -154,16 +158,16 @@
       z-index: 30;
       user-select: none;
       perspective: 900px;
-      filter: drop-shadow(0 0 10px rgba(51, 242, 250, 0.9));
+      filter: drop-shadow(0 0 15px rgba(51, 242, 250, 0.9));
       background: transparent;
     }
 
     .skin-avatar {
-      height: 320px;
+      height: 400px;  /* Bigger */
       width: auto;
       object-fit: contain;
       border-radius: 12px;
-      filter: drop-shadow(0 0 8px #19C7FE);
+      filter: drop-shadow(0 0 10px #19C7FE);
       animation: slowRotate 15s ease-in-out infinite alternate;
       will-change: transform;
       background: transparent !important;
@@ -203,15 +207,15 @@
     /* Responsive adjustments */
     @media (max-width: 1024px) {
       main.content-area {
-        max-width: calc(100vw - 64px - 200px);
+        max-width: calc(100vw - 64px - 250px);
         padding: 2rem 2rem 4rem;
       }
       .skin-container {
-        height: 280px;
-        right: 100px;
+        height: 320px;
+        right: 70px;
       }
       .skin-avatar {
-        height: 280px;
+        height: 320px;
       }
     }
 

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vote for VoidMC</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+      color: #e5e7eb;
+      margin: 0;
+      overflow-x: hidden;
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      border-radius: 12px;
+      padding: 1.5rem;
+      border: 1px solid rgba(51, 242, 250, 0.3);
+      color: #cbd5e1;
+      box-shadow:
+        0 4px 15px rgba(51, 242, 250, 0.15),
+        inset 0 0 10px rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .glass:hover {
+      transform: scale(1.03);
+      box-shadow:
+        0 8px 25px rgba(51, 242, 250, 0.35),
+        inset 0 0 12px rgba(255, 255, 255, 0.2);
+    }
+
+    h1 {
+      color: #33F2FA;
+      font-weight: 700;
+      font-size: 2.5rem;
+      text-align: center;
+      margin: 2rem 0 1rem;
+      text-shadow: 0 0 8px rgba(51, 242, 250, 0.6);
+    }
+
+    p.description {
+      text-align: center;
+      color: #b3e5fc;
+      font-size: 1.125rem;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #9ca3af;
+      padding: 2rem 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mx-auto px-6 py-10">
+    <h1>Vote for VoidMC</h1>
+    <p class="description">Help us grow and earn amazing in-game rewards by voting daily on the following websites!</p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto mt-10">
+      <!-- Vote Site 1 -->
+      <div class="glass text-center">
+        <h2 class="text-xl font-bold text-yellow-300 mb-2">TopG</h2>
+        <p class="text-sm text-gray-300 mb-4">Vote on TopG and help VoidMC reach the top!</p>
+        <a href="https://topg.org/minecraft" target="_blank" class="glass inline-block px-4 py-2 text-sm font-semibold text-white hover:text-[#33F2FA] rounded-lg">
+          Vote Now
+        </a>
+      </div>
+
+      <!-- Vote Site 2 -->
+      <div class="glass text-center">
+        <h2 class="text-xl font-bold text-yellow-300 mb-2">Minecraft-MP</h2>
+        <p class="text-sm text-gray-300 mb-4">Support us with a daily vote and get rewards!</p>
+        <a href="https://minecraft-mp.com" target="_blank" class="glass inline-block px-4 py-2 text-sm font-semibold text-white hover:text-[#33F2FA] rounded-lg">
+          Vote Now
+        </a>
+      </div>
+
+      <!-- Vote Site 3 -->
+      <div class="glass text-center">
+        <h2 class="text-xl font-bold text-yellow-300 mb-2">Planet Minecraft</h2>
+        <p class="text-sm text-gray-300 mb-4">Show your love for VoidMC on PMC!</p>
+        <a href="https://planetminecraft.com" target="_blank" class="glass inline-block px-4 py-2 text-sm font-semibold text-white hover:text-[#33F2FA] rounded-lg">
+          Vote Now
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 VoidMC Network — Thanks for supporting us!
+  </footer>
+</body>
+</html>

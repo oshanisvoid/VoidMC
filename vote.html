@@ -7,7 +7,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
-    /* Reset and base */
     body, html {
       margin: 0; padding: 0; height: 100%;
       font-family: 'Inter', sans-serif;
@@ -31,42 +30,26 @@
       justify-content: space-between;
       padding: 1rem 0;
       z-index: 20;
-      transition: transform 0.3s ease;
     }
     aside.left-sidebar .sidebar-link {
       color: #33F2FA;
       text-align: center;
       padding: 1rem 0;
-      position: relative;
       cursor: pointer;
       user-select: none;
       display: flex;
       flex-direction: column;
       align-items: center;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       text-decoration: none;
       transition: color 0.3s ease;
     }
-    aside.left-sidebar .sidebar-link .tooltip {
-      display: none;
-      position: absolute;
-      left: 70px;
-      top: 50%;
-      transform: translateY(-50%);
-      background: #33F2FA;
-      color: #0f0c29;
-      padding: 0.2rem 0.6rem;
-      border-radius: 8px;
-      font-size: 0.75rem;
-      white-space: nowrap;
-      pointer-events: none;
-    }
-    aside.left-sidebar .sidebar-link:hover .tooltip,
-    aside.left-sidebar .sidebar-link.active .tooltip {
-      display: block;
-    }
+    aside.left-sidebar .sidebar-link:hover,
     aside.left-sidebar .sidebar-link.active {
       color: #19C7FE;
+    }
+    aside.left-sidebar .sidebar-link .tooltip {
+      display: none;
     }
 
     /* Back to home top-left */
@@ -126,52 +109,52 @@
       }
     }
 
-    /* Voting box over skin on right side */
+    /* Voting box horizontally centered */
     main.content-area {
       position: fixed;
       top: 50%;
-      right: 3.5cm; /* leave space from skin on right */
-      transform: translateY(-50%);
+      left: 50%;
+      transform: translate(-50%, -50%);
       background: rgba(20,29,38,0.85);
       backdrop-filter: blur(20px);
       border-radius: 20px;
       box-shadow: 0 0 20px #33F2FA;
-      padding: 2rem 2.5rem;
-      width: 320px;
+      padding: 2rem 3rem;
+      width: 360px;
       display: flex;
       flex-direction: column;
-      gap: 1.8rem;
+      gap: 2rem;
       user-select: none;
       z-index: 15;
       transition: width 0.3s ease;
+      text-align: center;
     }
 
     main.content-area h2 {
       font-weight: 700;
       font-size: 2rem;
       margin: 0;
-      text-align: center;
       text-shadow: 0 0 8px #33F2FA;
     }
 
     .vote-buttons {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 1.2rem;
     }
     .vote-button {
       background: transparent;
       border: 2px solid #33F2FA;
       color: #33F2FA;
       font-weight: 700;
-      font-size: 1.1rem;
-      padding: 0.8rem 1.2rem;
+      font-size: 1.15rem;
+      padding: 0.9rem 1.5rem;
       border-radius: 14px;
       cursor: pointer;
       text-decoration: none;
       display: flex;
       align-items: center;
-      gap: 0.8rem;
+      gap: 1rem;
       justify-content: center;
       transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 0.3s;
     }
@@ -182,12 +165,11 @@
       transform: scale(1.05);
     }
     .vote-button i {
-      font-size: 1.3rem;
+      font-size: 1.4rem;
     }
 
     /* --- Responsive Styles --- */
 
-    /* Medium screens (tablets, small laptops) */
     @media (max-width: 1024px) {
       aside.left-sidebar {
         width: 48px;
@@ -204,24 +186,21 @@
         bottom: 1.5cm;
       }
       main.content-area {
-        right: 2.7cm;
-        width: 280px;
-        padding: 1.8rem 2rem;
-        font-size: 0.95rem;
+        width: 300px;
+        padding: 1.8rem 2.5rem;
       }
       main.content-area h2 {
-        font-size: 1.6rem;
+        font-size: 1.7rem;
       }
       .vote-button {
-        font-size: 1rem;
-        padding: 0.7rem 1rem;
+        font-size: 1.05rem;
+        padding: 0.8rem 1.3rem;
       }
       .vote-button i {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
       }
     }
 
-    /* Small screens (phones, narrow tablets) */
     @media (max-width: 768px) {
       aside.left-sidebar {
         display: none;
@@ -236,8 +215,8 @@
         width: 90vw;
         max-width: 400px;
         margin: 5rem auto 2rem auto;
-        right: auto;
-        transform: none;
+        left: 50%;
+        transform: translateX(-50%);
         border-radius: 16px;
         padding: 1.5rem 2rem;
         font-size: 1rem;
@@ -258,11 +237,10 @@
         font-size: 1.2rem;
       }
       .skin-container {
-        display: none; /* hide skin on mobile for space */
+        display: none;
       }
     }
 
-    /* Very small phones */
     @media (max-width: 400px) {
       .back-home {
         font-size: 0.85rem;
@@ -290,46 +268,56 @@
   <aside class="left-sidebar" aria-label="Sidebar Navigation">
     <div>
       <a href="index.html#home" class="sidebar-link" title="Home">
-        <i class="fas fa-home"></i><span class="tooltip">Home</span>
+        <i class="fas fa-home"></i>
       </a>
       <a href="#vote" class="sidebar-link active" title="Vote">
-        <i class="fas fa-vote-yea"></i><span class="tooltip">Vote</span>
+        <i class="fas fa-vote-yea"></i>
       </a>
       <a href="index.html#rules" class="sidebar-link" title="Rules">
-        <i class="fas fa-gavel"></i><span class="tooltip">Rules</span>
+        <i class="fas fa-gavel"></i>
       </a>
     </div>
     <div>
       <a href="index.html#login" class="sidebar-link" title="Login">
-        <i class="fas fa-sign-in-alt"></i><span class="tooltip">Login</span>
+        <i class="fas fa-sign-in-alt"></i>
       </a>
       <a href="index.html#register" class="sidebar-link" title="Register">
-        <i class="fas fa-user-plus"></i><span class="tooltip">Register</span>
+        <i class="fas fa-user-plus"></i>
       </a>
     </div>
   </aside>
 
+  <!-- Back to Home -->
   <a href="index.html#home" class="back-home" aria-label="Back to Home">
     <i class="fas fa-arrow-left"></i> Back to Home
   </a>
 
-  <main class="content-area" role="main" aria-label="Vote for VoidMC Network">
+  <!-- Skin container on right -->
+  <section class="skin-container" aria-label="Minecraft Skin _NoTzeR_">
+    <img
+      src="body-removebg-preview.png"
+      alt="Minecraft player skin for user _NoTzeR_"
+      draggable="false"
+      loading="lazy"
+    />
+  </section>
+
+  <!-- Voting main content -->
+  <main class="content-area" id="vote" role="main">
     <h2>Vote for VoidMC Network</h2>
+    <p>Help support the server by voting on your favorite Minecraft server lists! Voting rewards you with exclusive ranks, perks, and more.</p>
+
     <div class="vote-buttons">
       <a href="https://minecraftservers.org/vote/voidmc" target="_blank" rel="noopener" class="vote-button">
-        <i class="fas fa-check-circle"></i> MinecraftServers.org
+        <i class="fas fa-check-circle"></i> Vote on MinecraftServers.org
       </a>
       <a href="https://topg.org/minecraft-server-voidmc-vote" target="_blank" rel="noopener" class="vote-button">
-        <i class="fas fa-check-circle"></i> TopG
+        <i class="fas fa-check-circle"></i> Vote on TopG
       </a>
       <a href="https://minecraft-mp.com/server/voidmc/vote/" target="_blank" rel="noopener" class="vote-button">
-        <i class="fas fa-check-circle"></i> Minecraft-MP.com
+        <i class="fas fa-check-circle"></i> Vote on Minecraft-MP.com
       </a>
     </div>
   </main>
-
-  <section class="skin-container" aria-label="Minecraft Skin _NoTzeR_">
-    <img src="body-removebg-preview.png" alt="Minecraft player skin for user _NoTzeR_" />
-  </section>
 </body>
 </html>

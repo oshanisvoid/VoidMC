@@ -17,20 +17,25 @@
       overflow-x: hidden;
     }
 
+    /* Smaller glass background frame behind text */
     .glass {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(12px);
-      border-radius: 12px;
-      padding: 1.5rem 1.75rem;
-      border: 1px solid rgba(51, 242, 250, 0.3);
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(16px);
+      border-radius: 16px;
+      padding: 2rem 2.5rem;
+      border: 1.5px solid rgba(51, 242, 250, 0.4);
       color: #cbd5e1;
-      box-shadow: 0 4px 15px rgba(51, 242, 250, 0.15), inset 0 0 10px rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 20px rgba(51, 242, 250, 0.25), inset 0 0 15px rgba(255, 255, 255, 0.12);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      max-width: 480px;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 20;
     }
 
     .glass:hover {
       transform: scale(1.05);
-      box-shadow: 0 8px 25px rgba(51, 242, 250, 0.35), inset 0 0 12px rgba(255, 255, 255, 0.2);
+      box-shadow: 0 12px 30px rgba(51, 242, 250, 0.45), inset 0 0 20px rgba(255, 255, 255, 0.3);
       color: #33F2FA;
     }
 
@@ -87,7 +92,7 @@
 
     main.content-area {
       margin-left: 80px;
-      padding: 2rem 3rem;
+      padding: 3rem 3rem 4rem 3rem;
       min-height: 100vh;
       position: relative;
       z-index: 10;
@@ -98,60 +103,68 @@
       overflow: visible;
     }
 
-    /* Container for the voting text to keep it clean */
     .vote-text-container {
       flex: 1;
-      max-width: 600px;
-      z-index: 20;
+      max-width: 500px;
       position: relative;
+      z-index: 20;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
     }
 
     h2.section-title {
       color: #33F2FA;
       font-weight: 700;
-      font-size: 2rem;
+      font-size: 2.4rem;
       margin-bottom: 1rem;
       text-align: left;
-      text-shadow: 0 0 8px rgba(51, 242, 250, 0.6), 0 0 20px rgba(51, 242, 250, 0.4);
+      text-shadow: 0 0 8px rgba(51, 242, 250, 0.7), 0 0 20px rgba(51, 242, 250, 0.5);
     }
 
     p.description {
       color: #b3e5fc;
-      font-size: 1.125rem;
-      line-height: 1.7;
+      font-size: 1.25rem;
+      line-height: 1.8;
       margin-bottom: 2rem;
       text-align: left;
+      max-width: 460px;
     }
 
     .buttons-wrapper {
       display: flex;
       flex-direction: column;
       gap: 1rem;
-      max-width: 400px;
+      width: 100%;
     }
 
+    /* Skin image wrapper with overflow visible */
     .skin-image-wrapper {
       position: relative;
       flex: 1;
-      max-width: 480px;
+      max-width: 600px;
       width: 100%;
       overflow: visible;
       z-index: 10;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-left: -100px; /* Pull left to break frame */
     }
 
+    /* Bigger skin image crossing the frame */
     .skin-image {
-      max-width: 480px;
-      width: 100%;
-      border-radius: 1rem;
-      box-shadow: 0 0 40px rgba(51, 242, 250, 0.8);
+      width: 520px;
+      max-width: 100%;
+      border-radius: 1.5rem;
+      box-shadow: 0 0 60px rgba(51, 242, 250, 0.9);
       animation: slideInFloat 6s ease forwards;
       transform: translateX(100vw);
       position: relative;
-      top: 0;
-      right: -50px; /* Make it overflow the container on the right */
+      right: -60px;
       z-index: 15;
-      cursor: default;
       user-select: none;
+      cursor: default;
     }
 
     @keyframes slideInFloat {
@@ -167,12 +180,12 @@
         transform: translateY(0);
       }
       100% {
-        transform: translateY(-10px);
+        transform: translateY(-15px);
         animation-timing-function: ease-in-out;
       }
     }
 
-    /* After slideInFloat, keep floating indefinitely */
+    /* Infinite float after slide in */
     .skin-image.floating {
       animation: float 4s ease-in-out infinite;
       transform: translateX(0);
@@ -180,21 +193,31 @@
 
     @keyframes float {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+      50% { transform: translateY(-15px); }
     }
 
-    /* Responsive */
+    /* Responsive adjustments */
     @media (max-width: 1024px) {
       main.content-area {
         gap: 2rem;
-        padding: 2rem 2rem;
+        padding: 2rem 2rem 3rem 2rem;
       }
       .skin-image-wrapper {
-        max-width: 400px;
+        max-width: 450px;
+        margin-left: -70px;
       }
       .skin-image {
-        right: -30px;
+        width: 400px;
+        right: -40px;
+      }
+      .glass {
         max-width: 400px;
+      }
+      .vote-text-container {
+        max-width: 400px;
+      }
+      p.description {
+        max-width: 380px;
       }
     }
 
@@ -203,20 +226,23 @@
         flex-direction: column;
         margin-left: 64px;
         padding: 1.5rem 2rem;
-        gap: 2.5rem;
+        gap: 3rem;
       }
       .skin-image-wrapper {
-        max-width: 320px;
+        max-width: 380px;
         width: 80vw;
+        margin-left: -40px;
+        justify-content: center;
       }
       .skin-image {
+        width: 340px;
         right: 0;
-        max-width: 320px;
-        border-radius: 1rem 1rem 0 0;
+        border-radius: 1.25rem;
       }
       .vote-text-container {
         max-width: 100%;
         text-align: center;
+        align-items: center;
       }
       h2.section-title, p.description {
         text-align: center;
@@ -233,14 +259,23 @@
       }
       main.content-area {
         margin-left: 48px;
-        padding: 1rem 1rem;
+        padding: 1rem 1rem 2rem 1rem;
       }
       .skin-image-wrapper {
         max-width: 280px;
         width: 90vw;
+        margin-left: -20px;
       }
       .skin-image {
-        max-width: 280px;
+        width: 280px;
+        right: 0;
+      }
+      .glass {
+        max-width: 100%;
+        padding: 1.5rem 1.75rem;
+      }
+      p.description {
+        max-width: 100%;
       }
     }
   </style>
@@ -261,35 +296,35 @@
 
   <!-- Voting Content -->
   <main class="content-area">
-    <!-- Voting Text on the left -->
+    <!-- Voting Text with smaller glass frame -->
     <div class="vote-text-container">
-      <h2 class="section-title">Vote for VoidMC Network</h2>
-      <p class="description">Help support the server by voting on your favorite Minecraft server lists! Voting rewards you with exclusive ranks, perks, and more.</p>
-      <div class="buttons-wrapper">
-        <a href="https://minecraftservers.org/vote/voidmc" target="_blank" rel="noopener" class="glass w-full text-center">
-          <i class="fas fa-check-circle mr-2"></i> Vote on MinecraftServers.org
-        </a>
-        <a href="https://topg.org/minecraft-server-voidmc-vote" target="_blank" rel="noopener" class="glass w-full text-center">
-          <i class="fas fa-check-circle mr-2"></i> Vote on TopG
-        </a>
-        <a href="https://minecraft-mp.com/server/voidmc/vote/" target="_blank" rel="noopener" class="glass w-full text-center">
-          <i class="fas fa-check-circle mr-2"></i> Vote on Minecraft-MP.com
-        </a>
+      <div class="glass">
+        <h2 class="section-title">Vote for VoidMC Network</h2>
+        <p class="description">Help support the server by voting on your favorite Minecraft server lists! Voting rewards you with exclusive ranks, perks, and more.</p>
+        <div class="buttons-wrapper">
+          <a href="https://minecraftservers.org/vote/voidmc" target="_blank" rel="noopener" class="glass w-full text-center">
+            <i class="fas fa-check-circle mr-2"></i> Vote on MinecraftServers.org
+          </a>
+          <a href="https://topg.org/minecraft-server-voidmc-vote" target="_blank" rel="noopener" class="glass w-full text-center">
+            <i class="fas fa-check-circle mr-2"></i> Vote on TopG
+          </a>
+          <a href="https://minecraft-mp.com/server/voidmc/vote/" target="_blank" rel="noopener" class="glass w-full text-center">
+            <i class="fas fa-check-circle mr-2"></i> Vote on Minecraft-MP
+          </a>
+        </div>
       </div>
     </div>
 
-    <!-- Skin Image on the right, overflowing container -->
+    <!-- Skin Image crossing frame -->
     <div class="skin-image-wrapper">
-      <img src="body-removebg-preview.png" alt="Player Skin" class="skin-image" id="skinImage" />
+      <img
+        src="https://crafatar.com/renders/head/2a3a2e14-9f2e-47b4-9ae7-36a273ef945d?overlay=true"
+        alt="VoidMC Skin"
+        class="skin-image floating"
+        draggable="false"
+        loading="lazy"
+      />
     </div>
   </main>
-
-  <script>
-    const skinImage = document.getElementById('skinImage');
-    // After the slideInFloat animation ends (~6s), add the floating class for infinite float
-    skinImage.addEventListener('animationend', () => {
-      skinImage.classList.add('floating');
-    });
-  </script>
 </body>
 </html>

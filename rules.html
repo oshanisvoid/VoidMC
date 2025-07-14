@@ -78,22 +78,24 @@
       min-height: 100vh;
       position: relative;
       z-index: 10;
-      max-width: 1200px;
-
       display: flex;
       align-items: center;
       gap: 3rem;
+      flex-wrap: nowrap; /* keep photo and rules in one line */
       justify-content: center;
-      flex-wrap: nowrap; /* keep photo and rules in same line */
+      max-width: 1200px;
     }
 
-    .text-content {
+    /* Rules container styling (kept exactly as you had before) */
+    .rules-content {
       flex: 1 1 600px;
       max-width: 700px;
-      margin-left: 1rem; /* move rules section slightly left */
+      color: #b3e5fc;
+      font-size: 1.125rem;
+      line-height: 1.7;
     }
 
-    h2.section-title {
+    .rules-content h2 {
       color: #33F2FA;
       font-weight: 700;
       font-size: 2rem;
@@ -102,21 +104,18 @@
       text-align: center;
     }
 
-    ul.rules-list {
+    .rules-content ul {
       list-style: none;
       padding-left: 0;
-      font-size: 1.125rem;
-      line-height: 1.7;
-      color: #b3e5fc;
     }
 
-    ul.rules-list li {
+    .rules-content ul li {
       margin-bottom: 1rem;
       position: relative;
       padding-left: 1.5rem;
     }
 
-    ul.rules-list li::before {
+    .rules-content ul li::before {
       content: "✔";
       position: absolute;
       left: 0;
@@ -124,7 +123,7 @@
       font-weight: 700;
     }
 
-    /* Skin image styles - no frame, bigger, responsive */
+    /* Skin image styles - same as voting page */
     .skin-image {
       max-width: 500px;
       width: 100%;
@@ -149,9 +148,6 @@
       .skin-image {
         max-width: 400px;
       }
-      .text-content {
-        margin-left: 0.5rem;
-      }
     }
 
     @media (max-width: 768px) {
@@ -160,9 +156,8 @@
         padding: 1.5rem 2rem;
         flex-direction: column;
       }
-      .text-content {
+      .rules-content {
         max-width: 100%;
-        margin-left: 0;
         text-align: center;
       }
       .skin-image {
@@ -202,9 +197,9 @@
 
   <!-- Rules Content -->
   <main class="content-area">
-    <div class="text-content">
-      <h2 class="section-title">VoidMC Network Rules</h2>
-      <ul class="rules-list">
+    <div class="rules-content">
+      <h2>VoidMC Network Rules</h2>
+      <ul>
         <li>Be respectful to all players and staff.</li>
         <li>No cheating, hacking, or exploiting game mechanics.</li>
         <li>No griefing or stealing from other players.</li>

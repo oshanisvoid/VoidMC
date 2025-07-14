@@ -64,6 +64,14 @@
       transform: scale(1.15);
     }
 
+    /* Highlight active sidebar link */
+    .sidebar-link.active,
+    .sidebar-link.active:hover {
+      color: #19C7FE;
+      transform: scale(1.2);
+      font-weight: 700;
+    }
+
     .tooltip {
       position: absolute;
       left: 60px;
@@ -145,13 +153,24 @@
       height: auto;
       border-radius: 0; /* no border radius */
       box-shadow: none; /* remove shadow */
-      animation: float 4s ease-in-out infinite;
       user-select: none;
+      animation: slideInFromRight 1s ease forwards, float 4s ease-in-out 1s infinite;
     }
 
     @keyframes float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
+    }
+
+    @keyframes slideInFromRight {
+      0% {
+        opacity: 0;
+        transform: translateX(100%);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
     }
 
     /* Responsive adjustments */
@@ -207,7 +226,7 @@
   <aside class="left-sidebar">
     <div class="flex flex-col space-y-6 items-center">
       <a href="index.html#home" class="sidebar-link"><i class="fas fa-home text-xl"></i><span class="tooltip">Home</span></a>
-      <a href="vote.html" class="sidebar-link"><i class="fas fa-vote-yea text-xl"></i><span class="tooltip">Vote</span></a>
+      <a href="vote.html" class="sidebar-link active"><i class="fas fa-vote-yea text-xl"></i><span class="tooltip">Vote</span></a>
       <a href="index.html#rules" class="sidebar-link"><i class="fas fa-gavel text-xl"></i><span class="tooltip">Rules</span></a>
     </div>
     <div class="flex flex-col space-y-4 items-center">

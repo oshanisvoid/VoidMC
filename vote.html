@@ -7,6 +7,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@3/tsparticles.bundle.min.js"></script>
   <style>
     body {
       font-family: 'Inter', sans-serif;
@@ -16,217 +17,113 @@
       overflow-x: hidden;
     }
 
-    /* Smaller voting frame */
     .glass {
-      background: rgba(255, 255, 255, 0.07);
-      backdrop-filter: blur(16px);
-      border-radius: 20px;
-      padding: 2rem 2rem 3rem 2rem;
-      border: 1.5px solid rgba(51, 242, 250, 0.4);
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      border-radius: 12px;
+      padding: 1.5rem 1.75rem;
+      border: 1px solid rgba(51, 242, 250, 0.3);
       color: #cbd5e1;
-      box-shadow: 0 8px 30px rgba(51, 242, 250, 0.3), inset 0 0 15px rgba(255, 255, 255, 0.1);
-      max-width: 400px;
-      position: relative;
-      z-index: 20;
+      box-shadow: 0 4px 15px rgba(51, 242, 250, 0.15), inset 0 0 10px rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .glass:hover {
       transform: scale(1.05);
-      box-shadow: 0 12px 40px rgba(51, 242, 250, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 25px rgba(51, 242, 250, 0.35), inset 0 0 12px rgba(255, 255, 255, 0.2);
       color: #33F2FA;
+    }
+
+    aside.left-sidebar {
+      width: 64px;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(8px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1rem 0;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 20;
+    }
+
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem;
+      color: #e5e7eb;
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    .sidebar-link:hover {
+      color: #19C7FE;
+      transform: scale(1.15);
+    }
+
+    .tooltip {
+      position: absolute;
+      left: 60px;
+      background: #1f2937;
+      color: white;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      opacity: 0;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+      pointer-events: none;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 30;
+    }
+
+    .sidebar-link:hover .tooltip {
+      opacity: 1;
     }
 
     main.content-area {
       margin-left: 80px;
-      padding: 3rem 3rem 4rem 3rem;
+      padding: 2rem 3rem;
       min-height: 100vh;
       position: relative;
       z-index: 10;
       display: flex;
       align-items: center;
       gap: 3rem;
-      flex-wrap: wrap;
-      overflow: visible;
-    }
-
-    .vote-text-container {
-      flex: 1;
-      max-width: 400px;
-      position: relative;
-      z-index: 20;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
     }
 
     h2.section-title {
       color: #33F2FA;
       font-weight: 700;
-      font-size: 2.4rem;
+      font-size: 2rem;
       margin-bottom: 1rem;
-      text-align: left;
-      text-shadow: 0 0 10px rgba(51, 242, 250, 0.7), 0 0 25px rgba(51, 242, 250, 0.5);
+      text-align: center;
+      text-shadow: 0 0 8px rgba(51, 242, 250, 0.6), 0 0 20px rgba(51, 242, 250, 0.4);
     }
 
     p.description {
       color: #b3e5fc;
-      font-size: 1.2rem;
+      font-size: 1.125rem;
       line-height: 1.7;
-      margin-bottom: 2rem;
-      text-align: left;
-      max-width: 380px;
+      max-width: 860px;
+      margin: 0 auto 2rem auto;
+      text-align: center;
     }
 
-    .buttons-wrapper {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      width: 100%;
-    }
-
-    /* Skin image wrapper with overflow visible and negative margin to cross */
-    .skin-image-wrapper {
-      position: relative;
-      flex: 1;
-      max-width: 600px;
-      width: 100%;
-      overflow: visible;
-      z-index: 10;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      margin-left: -130px; /* Cross the voting frame border */
-    }
-
-    /* Bigger skin image crossing frame */
     .skin-image {
-      width: 560px;
-      max-width: 100%;
-      border-radius: 2rem;
-      box-shadow: 0 0 70px rgba(51, 242, 250, 0.9);
-      animation: slideInFloat 6s ease forwards;
-      transform: translateX(100vw);
-      position: relative;
-      right: -80px;
-      z-index: 15;
-      user-select: none;
-      cursor: default;
-      transition: box-shadow 0.3s ease;
-    }
-    .skin-image:hover {
-      box-shadow: 0 0 100px rgba(51, 242, 250, 1);
-    }
-
-    @keyframes slideInFloat {
-      0% {
-        transform: translateX(100vw);
-        opacity: 0;
-      }
-      40% {
-        transform: translateX(0);
-        opacity: 1;
-      }
-      50% {
-        transform: translateY(0);
-      }
-      100% {
-        transform: translateY(-20px);
-        animation-timing-function: ease-in-out;
-      }
-    }
-
-    /* Floating animation after slide in */
-    .skin-image.floating {
+      max-width: 280px;
+      border-radius: 1rem;
+      box-shadow: 0 0 25px rgba(51, 242, 250, 0.4);
       animation: float 4s ease-in-out infinite;
-      transform: translateX(0);
     }
 
     @keyframes float {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
-    }
-
-    /* Responsive tweaks */
-    @media (max-width: 1024px) {
-      main.content-area {
-        gap: 2rem;
-        padding: 2rem 2rem 3rem 2rem;
-      }
-      .skin-image-wrapper {
-        max-width: 480px;
-        margin-left: -90px;
-      }
-      .skin-image {
-        width: 440px;
-        right: -50px;
-      }
-      .glass {
-        max-width: 360px;
-      }
-      .vote-text-container {
-        max-width: 360px;
-      }
-      p.description {
-        max-width: 340px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      main.content-area {
-        flex-direction: column;
-        margin-left: 64px;
-        padding: 1.5rem 2rem;
-        gap: 3rem;
-      }
-      .skin-image-wrapper {
-        max-width: 380px;
-        width: 80vw;
-        margin-left: -50px;
-        justify-content: center;
-      }
-      .skin-image {
-        width: 340px;
-        right: 0;
-        border-radius: 1.8rem;
-      }
-      .vote-text-container {
-        max-width: 100%;
-        text-align: center;
-        align-items: center;
-      }
-      h2.section-title, p.description {
-        text-align: center;
-      }
-      .buttons-wrapper {
-        align-items: center;
-        max-width: 100%;
-      }
-    }
-
-    @media (max-width: 480px) {
-      aside.left-sidebar {
-        width: 48px;
-      }
-      main.content-area {
-        margin-left: 48px;
-        padding: 1rem 1rem 2rem 1rem;
-      }
-      .skin-image-wrapper {
-        max-width: 280px;
-        width: 90vw;
-        margin-left: -15px;
-      }
-      .skin-image {
-        width: 280px;
-        right: 0;
-      }
-      .glass {
-        max-width: 100%;
-        padding: 1.5rem 1.75rem;
-      }
-      p.description {
-        max-width: 100%;
-      }
+      50% { transform: translateY(-10px); }
     }
   </style>
 </head>
@@ -246,33 +143,22 @@
 
   <!-- Voting Content -->
   <main class="content-area">
-    <div class="vote-text-container">
-      <div class="glass">
-        <h2 class="section-title">Vote for VoidMC Network</h2>
-        <p class="description">Help support the server by voting on your favorite Minecraft server lists! Voting rewards you with exclusive ranks, perks, and more.</p>
-        <div class="buttons-wrapper">
-          <a href="https://minecraftservers.org/vote/voidmc" target="_blank" rel="noopener" class="glass w-full text-center">
-            <i class="fas fa-check-circle mr-2"></i> Vote on MinecraftServers.org
-          </a>
-          <a href="https://topg.org/minecraft-server-voidmc-vote" target="_blank" rel="noopener" class="glass w-full text-center">
-            <i class="fas fa-check-circle mr-2"></i> Vote on TopG
-          </a>
-          <a href="https://minecraft-mp.com/server/voidmc/vote/" target="_blank" rel="noopener" class="glass w-full text-center">
-            <i class="fas fa-check-circle mr-2"></i> Vote on Minecraft-MP
-          </a>
-        </div>
+    <div class="flex flex-col flex-1">
+      <h2 class="section-title">Vote for VoidMC Network</h2>
+      <p class="description">Help support the server by voting on your favorite Minecraft server lists! Voting rewards you with exclusive ranks, perks, and more.</p>
+      <div class="flex flex-col gap-4 items-center mt-8">
+        <a href="https://minecraftservers.org/vote/voidmc" target="_blank" rel="noopener" class="glass w-full max-w-md text-center">
+          <i class="fas fa-check-circle mr-2"></i> Vote on MinecraftServers.org
+        </a>
+        <a href="https://topg.org/minecraft-server-voidmc-vote" target="_blank" rel="noopener" class="glass w-full max-w-md text-center">
+          <i class="fas fa-check-circle mr-2"></i> Vote on TopG
+        </a>
+        <a href="https://minecraft-mp.com/server/voidmc/vote/" target="_blank" rel="noopener" class="glass w-full max-w-md text-center">
+          <i class="fas fa-check-circle mr-2"></i> Vote on Minecraft-MP.com
+        </a>
       </div>
     </div>
-
-    <div class="skin-image-wrapper">
-      <img
-        src="body-removebg-preview.png"
-        alt="VoidMC Skin"
-        class="skin-image floating"
-        draggable="false"
-        loading="lazy"
-      />
-    </div>
+    <img src="https://minotar.net/armor/bust/Steve/280" alt="Player Skin" class="skin-image hidden md:block" />
   </main>
 </body>
 </html>

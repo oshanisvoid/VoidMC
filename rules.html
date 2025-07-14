@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VoidMC Network - Rules</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+      color: #e5e7eb;
+      margin: 0;
+      overflow-x: hidden;
+    }
+
+    aside.left-sidebar {
+      width: 64px;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(8px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1rem 0;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 20;
+    }
+
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem;
+      color: #e5e7eb;
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    .sidebar-link:hover {
+      color: #19C7FE;
+      transform: scale(1.15);
+    }
+
+    /* Highlight active sidebar link */
+    .sidebar-link.active,
+    .sidebar-link.active:hover {
+      color: #19C7FE;
+      transform: scale(1.2);
+      font-weight: 700;
+    }
+
+    .tooltip {
+      position: absolute;
+      left: 60px;
+      background: #1f2937;
+      color: white;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      opacity: 0;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+      pointer-events: none;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 30;
+    }
+
+    .sidebar-link:hover .tooltip {
+      opacity: 1;
+    }
+
+    main.content-area {
+      margin-left: 80px;
+      padding: 2rem 3rem;
+      min-height: 100vh;
+      position: relative;
+      z-index: 10;
+      max-width: 900px;
+    }
+
+    h1.page-title {
+      color: #33F2FA;
+      font-weight: 700;
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 0 8px rgba(51, 242, 250, 0.6), 0 0 20px rgba(51, 242, 250, 0.4);
+      text-align: center;
+    }
+
+    section.rules-section {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      border-radius: 12px;
+      padding: 2rem 2.5rem;
+      border: 1px solid rgba(51, 242, 250, 0.3);
+      box-shadow: 0 4px 15px rgba(51, 242, 250, 0.15), inset 0 0 10px rgba(255, 255, 255, 0.1);
+      color: #cbd5e1;
+      max-height: 75vh;
+      overflow-y: auto;
+      line-height: 1.6;
+    }
+
+    section.rules-section h2 {
+      color: #19C7FE;
+      font-weight: 700;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+      border-bottom: 2px solid #19C7FE;
+      padding-bottom: 0.3rem;
+    }
+
+    section.rules-section ul {
+      margin-left: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+
+    section.rules-section ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Scrollbar styling */
+    section.rules-section::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    section.rules-section::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    section.rules-section::-webkit-scrollbar-thumb {
+      background: rgba(25, 199, 254, 0.5);
+      border-radius: 10px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      main.content-area {
+        margin-left: 64px;
+        padding: 1.5rem 2rem;
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      aside.left-sidebar {
+        width: 48px;
+      }
+      main.content-area {
+        margin-left: 48px;
+        padding: 1rem 1rem 2rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar Navigation -->
+  <aside class="left-sidebar">
+    <div class="flex flex-col space-y-6 items-center">
+      <a href="index.html#home" class="sidebar-link"><i class="fas fa-home text-xl"></i><span class="tooltip">Home</span></a>
+      <a href="vote.html" class="sidebar-link"><i class="fas fa-vote-yea text-xl"></i><span class="tooltip">Vote</span></a>
+      <a href="rules.html" class="sidebar-link active"><i class="fas fa-gavel text-xl"></i><span class="tooltip">Rules</span></a>
+    </div>
+    <div class="flex flex-col space-y-4 items-center">
+      <a href="index.html#login" class="sidebar-link"><i class="fas fa-sign-in-alt text-xl"></i><span class="tooltip">Login</span></a>
+      <a href="index.html#register" class="sidebar-link"><i class="fas fa-user-plus text-xl"></i><span class="tooltip">Register</span></a>
+    </div>
+  </aside>
+
+  <main class="content-area">
+    <h1 class="page-title">VoidMC Network Rules</h1>
+    <section class="rules-section">
+      <h2>1. Be Respectful</h2>
+      <ul>
+        <li>Treat all players with respect. No harassment, racism, sexism, or hate speech.</li>
+        <li>Disagreements are fine but keep it friendly and constructive.</li>
+      </ul>
+
+      <h2>2. No Cheating or Exploiting</h2>
+      <ul>
+        <li>Using mods, hacks, or exploits to gain unfair advantages is strictly prohibited.</li>
+        <li>Report any exploits you find to the staff immediately.</li>
+      </ul>
+
+      <h2>3. No Griefing or Stealing</h2>
+      <ul>
+        <li>Destroying or stealing another player’s builds or items is not allowed.</li>
+        <li>Respect others' property at all times.</li>
+      </ul>
+
+      <h2>4. Use Appropriate Language</h2>
+      <ul>
+        <li>No excessive swearing, inappropriate or NSFW language in chat.</li>
+        <li>Keep the chat friendly and appropriate for all ages.</li>
+      </ul>
+
+      <h2>5. No Advertising</h2>
+      <ul>
+        <li>Advertising other servers, websites, or services is not allowed.</li>
+        <li>Staff announcements and events are the only exceptions.</li>
+      </ul>
+
+      <h2>6. Follow Staff Instructions</h2>
+      <ul>
+        <li>Listen to staff members and moderators. Their decisions are final.</li>
+        <li>Appeal bans or punishments through the official channels only.</li>
+      </ul>
+
+      <h2>7. Keep Builds Appropriate</h2>
+      <ul>
+        <li>No offensive, explicit, or inappropriate builds.</li>
+        <li>Respect the server theme and community guidelines.</li>
+      </ul>
+
+      <h2>8. Have Fun!</h2>
+      <ul>
+        <li>Enjoy your time on VoidMC Network and help build a positive community.</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>

@@ -46,12 +46,9 @@
       transform: scale(1.15);
     }
 
-    /* Highlight active sidebar link */
-    .sidebar-link.active,
-    .sidebar-link.active:hover {
-      color: #19C7FE;
-      transform: scale(1.2);
-      font-weight: 700;
+    .sidebar-link.active {
+      color: #33F2FA;
+      transform: scale(1.15);
     }
 
     .tooltip {
@@ -87,69 +84,47 @@
       align-items: center;
       gap: 3rem;
       justify-content: center;
-      flex-wrap: wrap;
+      flex-wrap: nowrap; /* keep photo and rules in same line */
     }
 
     .text-content {
       flex: 1 1 600px;
       max-width: 700px;
+      margin-left: 1rem; /* move rules section slightly left */
     }
 
-    h1.page-title {
+    h2.section-title {
       color: #33F2FA;
       font-weight: 700;
-      font-size: 2.5rem;
-      margin-bottom: 1.5rem;
+      font-size: 2rem;
+      margin-bottom: 1rem;
       text-shadow: 0 0 8px rgba(51, 242, 250, 0.6), 0 0 20px rgba(51, 242, 250, 0.4);
       text-align: center;
     }
 
-    section.rules-section {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(12px);
-      border-radius: 12px;
-      padding: 2rem 2.5rem;
-      border: 1px solid rgba(51, 242, 250, 0.3);
-      box-shadow: 0 4px 15px rgba(51, 242, 250, 0.15), inset 0 0 10px rgba(255, 255, 255, 0.1);
-      color: #cbd5e1;
-      max-height: 75vh;
-      overflow-y: auto;
-      line-height: 1.6;
+    ul.rules-list {
+      list-style: none;
+      padding-left: 0;
+      font-size: 1.125rem;
+      line-height: 1.7;
+      color: #b3e5fc;
     }
 
-    section.rules-section h2 {
-      color: #19C7FE;
+    ul.rules-list li {
+      margin-bottom: 1rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    ul.rules-list li::before {
+      content: "✔";
+      position: absolute;
+      left: 0;
+      color: #33F2FA;
       font-weight: 700;
-      margin-top: 1.5rem;
-      margin-bottom: 0.75rem;
-      border-bottom: 2px solid #19C7FE;
-      padding-bottom: 0.3rem;
     }
 
-    section.rules-section ul {
-      margin-left: 1.25rem;
-      margin-bottom: 1.25rem;
-    }
-
-    section.rules-section ul li {
-      margin-bottom: 0.5rem;
-    }
-
-    /* Scrollbar styling */
-    section.rules-section::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    section.rules-section::-webkit-scrollbar-track {
-      background: transparent;
-    }
-
-    section.rules-section::-webkit-scrollbar-thumb {
-      background: rgba(25, 199, 254, 0.5);
-      border-radius: 10px;
-    }
-
-    /* Skin image styles - no border radius, no shadow, animated float */
+    /* Skin image styles - no frame, bigger, responsive */
     .skin-image {
       max-width: 500px;
       width: 100%;
@@ -158,7 +133,6 @@
       box-shadow: none;
       animation: float 4s ease-in-out infinite;
       user-select: none;
-      flex-shrink: 0;
     }
 
     @keyframes float {
@@ -166,7 +140,7 @@
       50% { transform: translateY(-10px); }
     }
 
-    /* Responsive */
+    /* Responsive adjustments */
     @media (max-width: 1024px) {
       main.content-area {
         gap: 2rem;
@@ -175,6 +149,9 @@
       .skin-image {
         max-width: 400px;
       }
+      .text-content {
+        margin-left: 0.5rem;
+      }
     }
 
     @media (max-width: 768px) {
@@ -182,7 +159,11 @@
         margin-left: 64px;
         padding: 1.5rem 2rem;
         flex-direction: column;
+      }
+      .text-content {
         max-width: 100%;
+        margin-left: 0;
+        text-align: center;
       }
       .skin-image {
         max-width: 300px;
@@ -219,59 +200,21 @@
     </div>
   </aside>
 
+  <!-- Rules Content -->
   <main class="content-area">
     <div class="text-content">
-      <h1 class="page-title">VoidMC Network Rules</h1>
-      <section class="rules-section">
-        <h2>1. Be Respectful</h2>
-        <ul>
-          <li>Treat all players with respect. No harassment, racism, sexism, or hate speech.</li>
-          <li>Disagreements are fine but keep it friendly and constructive.</li>
-        </ul>
-
-        <h2>2. No Cheating or Exploiting</h2>
-        <ul>
-          <li>Using mods, hacks, or exploits to gain unfair advantages is strictly prohibited.</li>
-          <li>Report any exploits you find to the staff immediately.</li>
-        </ul>
-
-        <h2>3. No Griefing or Stealing</h2>
-        <ul>
-          <li>Destroying or stealing another player’s builds or items is not allowed.</li>
-          <li>Respect others' property at all times.</li>
-        </ul>
-
-        <h2>4. Use Appropriate Language</h2>
-        <ul>
-          <li>No excessive swearing, inappropriate or NSFW language in chat.</li>
-          <li>Keep the chat friendly and appropriate for all ages.</li>
-        </ul>
-
-        <h2>5. No Advertising</h2>
-        <ul>
-          <li>Advertising other servers, websites, or services is not allowed.</li>
-          <li>Staff announcements and events are the only exceptions.</li>
-        </ul>
-
-        <h2>6. Follow Staff Instructions</h2>
-        <ul>
-          <li>Listen to staff members and moderators. Their decisions are final.</li>
-          <li>Appeal bans or punishments through the official channels only.</li>
-        </ul>
-
-        <h2>7. Keep Builds Appropriate</h2>
-        <ul>
-          <li>No offensive, explicit, or inappropriate builds.</li>
-          <li>Respect the server theme and community guidelines.</li>
-        </ul>
-
-        <h2>8. Have Fun!</h2>
-        <ul>
-          <li>Enjoy your time on VoidMC Network and help build a positive community.</li>
-        </ul>
-      </section>
+      <h2 class="section-title">VoidMC Network Rules</h2>
+      <ul class="rules-list">
+        <li>Be respectful to all players and staff.</li>
+        <li>No cheating, hacking, or exploiting game mechanics.</li>
+        <li>No griefing or stealing from other players.</li>
+        <li>Use appropriate language; no offensive or discriminatory remarks.</li>
+        <li>Follow staff instructions at all times.</li>
+        <li>Do not advertise other servers or services.</li>
+        <li>Report bugs and exploits responsibly.</li>
+        <li>Have fun and play fair!</li>
+      </ul>
     </div>
-
     <img src="notz.png" alt="Player Skin" class="skin-image" />
   </main>
 </body>

@@ -3,78 +3,116 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vote for VoidMC</title>
+  <title>Vote - VoidMC Network</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@3/tsparticles.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     body {
-      font-family: 'Orbitron', sans-serif;
-      background: linear-gradient(to right, #1a1a2e, #16213e, #0f3460);
-      color: #e0f7fa;
-      overflow-x: hidden;
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+      overflow: hidden;
+      color: #e5e7eb;
     }
-    #particles-js {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-    }
+
     .glass {
       background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      box-shadow: 0 0 20px rgba(51, 242, 250, 0.2);
+      backdrop-filter: blur(12px);
+      border-radius: 16px;
+      border: 1px solid rgba(51, 242, 250, 0.3);
+      box-shadow:
+        0 4px 15px rgba(51, 242, 250, 0.15),
+        inset 0 0 10px rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+      z-index: 2;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #33F2FA;
+      text-shadow: 0 0 8px rgba(51, 242, 250, 0.6);
+    }
+
+    .vote-button {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(51, 242, 250, 0.3);
+      color: #33F2FA;
+      padding: 1rem 2rem;
+      margin: 1rem;
+      border-radius: 12px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 8px rgba(51, 242, 250, 0.2);
+    }
+
+    .vote-button:hover {
+      transform: scale(1.05);
+      background: rgba(51, 242, 250, 0.1);
+      box-shadow: 0 0 16px rgba(51, 242, 250, 0.6);
+      color: white;
+    }
+
+    #particles-js {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 0;
+    }
+
+    @media (max-width: 640px) {
+      .glass {
+        padding: 1.5rem;
+      }
+      h1 {
+        font-size: 2rem;
+      }
     }
   </style>
 </head>
 <body>
   <div id="particles-js"></div>
-  <div class="relative z-10 min-h-screen flex items-center justify-center">
-    <div class="glass p-10 rounded-xl max-w-3xl w-full mx-4 text-center">
-      <h1 class="text-4xl md:text-5xl font-bold text-[#33F2FA] drop-shadow mb-6">Vote for VoidMC</h1>
-      <p class="text-lg text-gray-200 mb-10 max-w-2xl mx-auto">
-        Voting helps support the server and brings new players to our community. Vote daily and earn amazing rewards in-game!
+
+  <main class="min-h-screen flex items-center justify-center px-6 relative z-10">
+    <div class="glass">
+      <h1>Vote for VoidMC</h1>
+      <p class="text-gray-300 text-lg my-4 max-w-2xl mx-auto">
+        Help our community grow by voting daily on the platforms below. Earn awesome rewards in-game and boost VoidMC to the top!
       </p>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <a href="https://topg.org/minecraft-servers/server/123456" target="_blank" class="bg-[#33F2FA] hover:bg-[#1ed1e9] text-black font-semibold py-4 px-6 rounded-lg transition-all shadow-lg">
-          🌐 Vote on TopG
-        </a>
-        <a href="https://minecraftservers.org/vote/voidmc" target="_blank" class="bg-[#33F2FA] hover:bg-[#1ed1e9] text-black font-semibold py-4 px-6 rounded-lg transition-all shadow-lg">
-          🧭 Vote on MinecraftServers.org
-        </a>
-        <a href="https://minecraft-mp.com/server/voidmc/vote/" target="_blank" class="bg-[#33F2FA] hover:bg-[#1ed1e9] text-black font-semibold py-4 px-6 rounded-lg transition-all shadow-lg">
-          📌 Vote on Minecraft-MP
-        </a>
-        <a href="https://planetminecraft.com/server/voidmc-network/vote/" target="_blank" class="bg-[#33F2FA] hover:bg-[#1ed1e9] text-black font-semibold py-4 px-6 rounded-lg transition-all shadow-lg">
-          🪐 Vote on PlanetMinecraft
-        </a>
+      <div class="flex flex-wrap justify-center gap-4 mt-6">
+        <a href="https://minecraftservers.org/vote/voidmc" class="vote-button" target="_blank"><i class="fas fa-external-link-alt mr-2"></i> MinecraftServers.org</a>
+        <a href="https://topg.org/minecraft-servers/server-123456" class="vote-button" target="_blank"><i class="fas fa-external-link-alt mr-2"></i> TopG.org</a>
+        <a href="https://minecraft-server-list.com/server/12345/vote/" class="vote-button" target="_blank"><i class="fas fa-external-link-alt mr-2"></i> MC-Server-List</a>
       </div>
 
-      <p class="text-sm text-gray-400 mt-10">Make sure you are online on the server when you vote to receive rewards: <span class="text-white font-bold">play.voidmc.fun</span></p>
+      <p class="mt-8 text-sm text-gray-400">Thank you for supporting VoidMC Network! 🌀</p>
     </div>
-  </div>
+  </main>
 
   <script>
     tsParticles.load("particles-js", {
-      background: { color: { value: "transparent" } },
-      fpsLimit: 60,
-      interactivity: {
-        events: { onHover: { enable: true, mode: "repulse" }, resize: true },
-        modes: { repulse: { distance: 80, duration: 0.4 } },
-      },
+      fullScreen: { enable: false },
+      background: { color: "transparent" },
       particles: {
+        number: { value: 50 },
         color: { value: "#33F2FA" },
-        links: { color: "#33F2FA", distance: 120, enable: true, opacity: 0.3, width: 1 },
-        collisions: { enable: true },
-        move: { direction: "none", enable: true, outMode: "bounce", speed: 1 },
-        number: { density: { enable: true, area: 800 }, value: 50 },
-        opacity: { value: 0.5 },
         shape: { type: "circle" },
-        size: { random: true, value: 3 },
+        opacity: { value: 0.5 },
+        size: { value: 3 },
+        move: { enable: true, speed: 1.5, outModes: { default: "bounce" } }
       },
-      detectRetina: true,
+      interactivity: {
+        events: { onHover: { enable: true, mode: "repulse" } },
+        modes: { repulse: { distance: 100 } }
+      }
     });
   </script>
 </body>

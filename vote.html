@@ -189,35 +189,36 @@
     }
 
     /* Skin container fills almost full page height minus 2cm space top and bottom */
-    .skin-container {
-      flex-shrink: 0;
-      height: calc(100vh - 4cm); /* full height minus 2cm top & bottom */
-      max-height: none; /* remove limit */
-      width: 320px; /* wider */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      filter: drop-shadow(0 0 25px rgba(51, 242, 250, 1));
-      user-select: none;
-      perspective: 900px;
-      position: relative;
+.skin-container {
+  flex-shrink: 0;
+  height: calc(100vh - 4cm); /* 2cm top + 2cm bottom */
+  width: calc(100vw - 480px - 3cm); /* full width minus vote panel and 3cm right space */
+  max-height: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 0 30px rgba(51, 242, 250, 1));
+  user-select: none;
+  perspective: 900px;
+  position: relative;
 
-      animation: slideInFromRight 1s ease forwards;
-      opacity: 0;
-    }
+  animation: slideInFromRight 1s ease forwards;
+  opacity: 0;
+}
 
-    .skin-avatar {
-      max-height: 100%;
-      max-width: 100%;
-      object-fit: contain;
-      border-radius: 16px;
-      filter: drop-shadow(0 0 20px #19C7FE);
-      will-change: transform;
-      user-select: none;
-      pointer-events: none;
-      background: transparent !important;
-      animation: slowRotate 15s ease-in-out infinite alternate;
-    }
+.skin-avatar {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 16px;
+  filter: drop-shadow(0 0 25px #19C7FE);
+  will-change: transform;
+  user-select: none;
+  pointer-events: none;
+  background: transparent !important;
+  animation: slowRotate 15s ease-in-out infinite alternate;
+}
+
 
     /* Animations */
     @keyframes slowRotate {

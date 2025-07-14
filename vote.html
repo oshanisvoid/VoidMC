@@ -94,6 +94,18 @@
       display: flex;
       align-items: center;
       gap: 3rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    /* Text content container */
+    .text-content {
+      flex: 1 1 350px;
+      max-width: 700px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
 
     h2.section-title {
@@ -101,7 +113,6 @@
       font-weight: 700;
       font-size: 2rem;
       margin-bottom: 1rem;
-      text-align: center;
       text-shadow: 0 0 8px rgba(51, 242, 250, 0.6), 0 0 20px rgba(51, 242, 250, 0.4);
     }
 
@@ -109,21 +120,85 @@
       color: #b3e5fc;
       font-size: 1.125rem;
       line-height: 1.7;
-      max-width: 860px;
-      margin: 0 auto 2rem auto;
-      text-align: center;
+      margin-bottom: 2rem;
+      max-width: 700px;
     }
 
+    .buttons-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .glass {
+      width: 100%;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    /* Skin image styles - no frame, bigger, responsive */
     .skin-image {
-      max-width: 280px;
-      border-radius: 1rem;
-      box-shadow: 0 0 25px rgba(51, 242, 250, 0.4);
+      max-width: 500px;
+      width: 100%;
+      height: auto;
+      border-radius: 0; /* no border radius */
+      box-shadow: none; /* remove shadow */
       animation: float 4s ease-in-out infinite;
+      user-select: none;
     }
 
     @keyframes float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1024px) {
+      main.content-area {
+        gap: 2rem;
+        padding: 2rem;
+      }
+      .skin-image {
+        max-width: 400px;
+      }
+      .buttons-wrapper {
+        max-width: 360px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      main.content-area {
+        margin-left: 64px;
+        padding: 1.5rem 2rem;
+        flex-direction: column;
+      }
+      .text-content {
+        max-width: 100%;
+        text-align: center;
+      }
+      .buttons-wrapper {
+        max-width: 100%;
+      }
+      .skin-image {
+        max-width: 300px;
+        margin-top: 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      aside.left-sidebar {
+        width: 48px;
+      }
+      main.content-area {
+        margin-left: 48px;
+        padding: 1rem 1rem 2rem 1rem;
+      }
+      .skin-image {
+        max-width: 240px;
+        margin-top: 1.5rem;
+      }
     }
   </style>
 </head>
@@ -143,22 +218,23 @@
 
   <!-- Voting Content -->
   <main class="content-area">
-    <div class="flex flex-col flex-1">
+    <div class="text-content">
       <h2 class="section-title">Vote for VoidMC Network</h2>
       <p class="description">Help support the server by voting on your favorite Minecraft server lists! Voting rewards you with exclusive ranks, perks, and more.</p>
-      <div class="flex flex-col gap-4 items-center mt-8">
-        <a href="https://minecraftservers.org/vote/voidmc" target="_blank" rel="noopener" class="glass w-full max-w-md text-center">
+      <div class="buttons-wrapper">
+        <a href="https://minecraftservers.org/vote/voidmc" target="_blank" rel="noopener" class="glass text-center">
           <i class="fas fa-check-circle mr-2"></i> Vote on MinecraftServers.org
         </a>
-        <a href="https://topg.org/minecraft-server-voidmc-vote" target="_blank" rel="noopener" class="glass w-full max-w-md text-center">
+        <a href="https://topg.org/minecraft-server-voidmc-vote" target="_blank" rel="noopener" class="glass text-center">
           <i class="fas fa-check-circle mr-2"></i> Vote on TopG
         </a>
-        <a href="https://minecraft-mp.com/server/voidmc/vote/" target="_blank" rel="noopener" class="glass w-full max-w-md text-center">
+        <a href="https://minecraft-mp.com/server/voidmc/vote/" target="_blank" rel="noopener" class="glass text-center">
           <i class="fas fa-check-circle mr-2"></i> Vote on Minecraft-MP.com
         </a>
       </div>
     </div>
-    <img src="body-removebg-preview.png" alt="Player Skin" class="skin-image hidden md:block" />
+
+    <img src="body-removebg-preview.png" alt="Player Skin" class="skin-image" />
   </main>
 </body>
 </html>

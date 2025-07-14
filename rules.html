@@ -81,7 +81,18 @@
       min-height: 100vh;
       position: relative;
       z-index: 10;
-      max-width: 900px;
+      max-width: 1200px;
+
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .text-content {
+      flex: 1 1 600px;
+      max-width: 700px;
     }
 
     h1.page-title {
@@ -138,12 +149,44 @@
       border-radius: 10px;
     }
 
+    /* Skin image styles - no border radius, no shadow, animated float */
+    .skin-image {
+      max-width: 500px;
+      width: 100%;
+      height: auto;
+      border-radius: 0;
+      box-shadow: none;
+      animation: float 4s ease-in-out infinite;
+      user-select: none;
+      flex-shrink: 0;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
     /* Responsive */
+    @media (max-width: 1024px) {
+      main.content-area {
+        gap: 2rem;
+        padding: 2rem;
+      }
+      .skin-image {
+        max-width: 400px;
+      }
+    }
+
     @media (max-width: 768px) {
       main.content-area {
         margin-left: 64px;
         padding: 1.5rem 2rem;
+        flex-direction: column;
         max-width: 100%;
+      }
+      .skin-image {
+        max-width: 300px;
+        margin-top: 2rem;
       }
     }
 
@@ -154,6 +197,10 @@
       main.content-area {
         margin-left: 48px;
         padding: 1rem 1rem 2rem 1rem;
+      }
+      .skin-image {
+        max-width: 240px;
+        margin-top: 1.5rem;
       }
     }
   </style>
@@ -173,55 +220,59 @@
   </aside>
 
   <main class="content-area">
-    <h1 class="page-title">VoidMC Network Rules</h1>
-    <section class="rules-section">
-      <h2>1. Be Respectful</h2>
-      <ul>
-        <li>Treat all players with respect. No harassment, racism, sexism, or hate speech.</li>
-        <li>Disagreements are fine but keep it friendly and constructive.</li>
-      </ul>
+    <div class="text-content">
+      <h1 class="page-title">VoidMC Network Rules</h1>
+      <section class="rules-section">
+        <h2>1. Be Respectful</h2>
+        <ul>
+          <li>Treat all players with respect. No harassment, racism, sexism, or hate speech.</li>
+          <li>Disagreements are fine but keep it friendly and constructive.</li>
+        </ul>
 
-      <h2>2. No Cheating or Exploiting</h2>
-      <ul>
-        <li>Using mods, hacks, or exploits to gain unfair advantages is strictly prohibited.</li>
-        <li>Report any exploits you find to the staff immediately.</li>
-      </ul>
+        <h2>2. No Cheating or Exploiting</h2>
+        <ul>
+          <li>Using mods, hacks, or exploits to gain unfair advantages is strictly prohibited.</li>
+          <li>Report any exploits you find to the staff immediately.</li>
+        </ul>
 
-      <h2>3. No Griefing or Stealing</h2>
-      <ul>
-        <li>Destroying or stealing another player’s builds or items is not allowed.</li>
-        <li>Respect others' property at all times.</li>
-      </ul>
+        <h2>3. No Griefing or Stealing</h2>
+        <ul>
+          <li>Destroying or stealing another player’s builds or items is not allowed.</li>
+          <li>Respect others' property at all times.</li>
+        </ul>
 
-      <h2>4. Use Appropriate Language</h2>
-      <ul>
-        <li>No excessive swearing, inappropriate or NSFW language in chat.</li>
-        <li>Keep the chat friendly and appropriate for all ages.</li>
-      </ul>
+        <h2>4. Use Appropriate Language</h2>
+        <ul>
+          <li>No excessive swearing, inappropriate or NSFW language in chat.</li>
+          <li>Keep the chat friendly and appropriate for all ages.</li>
+        </ul>
 
-      <h2>5. No Advertising</h2>
-      <ul>
-        <li>Advertising other servers, websites, or services is not allowed.</li>
-        <li>Staff announcements and events are the only exceptions.</li>
-      </ul>
+        <h2>5. No Advertising</h2>
+        <ul>
+          <li>Advertising other servers, websites, or services is not allowed.</li>
+          <li>Staff announcements and events are the only exceptions.</li>
+        </ul>
 
-      <h2>6. Follow Staff Instructions</h2>
-      <ul>
-        <li>Listen to staff members and moderators. Their decisions are final.</li>
-        <li>Appeal bans or punishments through the official channels only.</li>
-      </ul>
+        <h2>6. Follow Staff Instructions</h2>
+        <ul>
+          <li>Listen to staff members and moderators. Their decisions are final.</li>
+          <li>Appeal bans or punishments through the official channels only.</li>
+        </ul>
 
-      <h2>7. Keep Builds Appropriate</h2>
-      <ul>
-        <li>No offensive, explicit, or inappropriate builds.</li>
-        <li>Respect the server theme and community guidelines.</li>
-      </ul>
+        <h2>7. Keep Builds Appropriate</h2>
+        <ul>
+          <li>No offensive, explicit, or inappropriate builds.</li>
+          <li>Respect the server theme and community guidelines.</li>
+        </ul>
 
-      <h2>8. Have Fun!</h2>
-      <ul>
-        <li>Enjoy your time on VoidMC Network and help build a positive community.</li>
-      </ul>
-    </section>
+        <h2>8. Have Fun!</h2>
+        <ul>
+          <li>Enjoy your time on VoidMC Network and help build a positive community.</li>
+        </ul>
+      </section>
+    </div>
+
+    <img src="notz.png" alt="Player Skin" class="skin-image" />
   </main>
 </body>
 </html>

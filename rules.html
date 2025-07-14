@@ -144,26 +144,27 @@
       border-radius: 10px;
     }
 
-    /* Image styles like vote page + slide in from right + float animation */
+    /* Image styles - slide down from top + float + bigger size */
     .skin-image {
-      max-width: 400px;
-      width: 100%;
+      width: 480px;
+      max-width: 100%;
       height: auto;
       user-select: none;
-      animation: slideInFromRight 1s ease forwards, float 4s ease-in-out 1s infinite;
+      animation: slideDownFromTop 1s ease forwards, float 4s ease-in-out 1s infinite;
       box-shadow: none;
       border-radius: 0;
       flex-shrink: 0;
+      align-self: center; /* vertically center image in flex container */
     }
 
-    @keyframes slideInFromRight {
+    @keyframes slideDownFromTop {
       0% {
         opacity: 0;
-        transform: translateX(100%);
+        transform: translateY(-100%);
       }
       100% {
         opacity: 1;
-        transform: translateX(0);
+        transform: translateY(0);
       }
     }
 
@@ -185,9 +186,9 @@
         max-width: 100%;
       }
       .skin-image {
-        max-width: 300px;
+        width: 360px;
         margin-top: 2rem;
-        animation: slideInFromRight 1s ease forwards, float 4s ease-in-out 1s infinite;
+        animation: slideDownFromTop 1s ease forwards, float 4s ease-in-out 1s infinite;
       }
       h1.page-title {
         font-size: 2rem;
@@ -203,7 +204,7 @@
         padding: 1rem 1rem 2rem 1rem;
       }
       .skin-image {
-        max-width: 240px;
+        width: 280px;
         margin-top: 1.5rem;
       }
     }

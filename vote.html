@@ -94,6 +94,7 @@
       display: flex;
       align-items: center;
       gap: 3rem;
+      flex-wrap: wrap;
     }
 
     h2.section-title {
@@ -115,15 +116,70 @@
     }
 
     .skin-image {
-      max-width: 280px;
+      max-width: 400px;
+      width: 90vw;
       border-radius: 1rem;
-      box-shadow: 0 0 25px rgba(51, 242, 250, 0.4);
+      box-shadow: 0 0 40px rgba(51, 242, 250, 0.6);
+      animation: slideInFloat 6s ease forwards;
+      /* Start off screen to the right */
+      transform: translateX(100vw);
+    }
+
+    @keyframes slideInFloat {
+      0% {
+        transform: translateX(100vw);
+        opacity: 0;
+      }
+      40% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+      50% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(-10px);
+        animation-timing-function: ease-in-out;
+      }
+    }
+
+    /* After slideInFloat, keep floating indefinitely */
+    .skin-image.floating {
       animation: float 4s ease-in-out infinite;
+      transform: translateX(0);
     }
 
     @keyframes float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      main.content-area {
+        margin-left: 64px;
+        padding: 1.5rem 2rem;
+        flex-direction: column;
+        gap: 2rem;
+      }
+      .skin-image {
+        max-width: 320px;
+        width: 80vw;
+      }
+    }
+
+    @media (max-width: 480px) {
+      aside.left-sidebar {
+        width: 48px;
+      }
+      main.content-area {
+        margin-left: 48px;
+        padding: 1rem 1rem;
+      }
+      .skin-image {
+        max-width: 280px;
+        width: 90vw;
+      }
     }
   </style>
 </head>
@@ -143,6 +199,7 @@
 
   <!-- Voting Content -->
   <main class="content-area">
+    <img src="body-removebg-preview.png" alt="Player Skin" class="skin-image" id="skinImage" />
     <div class="flex flex-col flex-1">
       <h2 class="section-title">Vote for VoidMC Network</h2>
       <p class="description">Help support the server by voting on your favorite Minecraft server lists! Voting rewards you with exclusive ranks, perks, and more.</p>
@@ -158,7 +215,14 @@
         </a>
       </div>
     </div>
-    <img src="body-removebg-preview.png" alt="Player Skin" class="skin-image hidden md:block" />
   </main>
+
+  <script>
+    const skinImage = document.getElementById('skinImage');
+    // After the slideInFloat animation ends (~6s), add the floating class for infinite float
+    skinImage.addEventListener('animationend', () => {
+      skinImage.classList.add('floating');
+    });
+  </script>
 </body>
 </html>

@@ -86,11 +86,14 @@
     }
 
     main.content-area {
-      margin-left: 64px;
+      margin-left: 80px;
       padding: 2rem 3rem;
       min-height: 100vh;
       position: relative;
       z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 3rem;
     }
 
     h2.section-title {
@@ -110,6 +113,18 @@
       margin: 0 auto 2rem auto;
       text-align: center;
     }
+
+    .skin-image {
+      max-width: 280px;
+      border-radius: 1rem;
+      box-shadow: 0 0 25px rgba(51, 242, 250, 0.4);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
   </style>
 </head>
 <body>
@@ -128,18 +143,21 @@
 
   <!-- Voting Content -->
   <main class="content-area">
-    <h2 class="section-title">Vote for VoidMC Network</h2>
-    <p class="description">Help support the server by voting on your favorite Minecraft server lists! Voting rewards you with exclusive ranks, perks, and more.</p>
-    <div class="flex flex-col gap-4 items-center mt-8">
-      <a href="https://minecraftservers.org/vote/voidmc" target="_blank" rel="noopener" class="glass w-full max-w-md text-center">
-        <i class="fas fa-check-circle mr-2"></i> Vote on MinecraftServers.org
-      </a>
-      <a href="https://topg.org/minecraft-server-voidmc-vote" target="_blank" rel="noopener" class="glass w-full max-w-md text-center">
-        <i class="fas fa-check-circle mr-2"></i> Vote on TopG
-      </a>
-      <a href="https://minecraft-mp.com/server/voidmc/vote/" target="_blank" rel="noopener" class="glass w-full max-w-md text-center">
-        <i class="fas fa-check-circle mr-2"></i> Vote on Minecraft-MP.com
-      </a>
+    <img src="https://minotar.net/armor/bust/Steve/280" alt="Player Skin" class="skin-image hidden md:block" />
+    <div class="flex flex-col flex-1">
+      <h2 class="section-title">Vote for VoidMC Network</h2>
+      <p class="description">Help support the server by voting on your favorite Minecraft server lists! Voting rewards you with exclusive ranks, perks, and more.</p>
+      <div class="flex flex-col gap-4 items-center mt-8">
+        <a href="https://minecraftservers.org/vote/voidmc" target="_blank" rel="noopener" class="glass w-full max-w-md text-center">
+          <i class="fas fa-check-circle mr-2"></i> Vote on MinecraftServers.org
+        </a>
+        <a href="https://topg.org/minecraft-server-voidmc-vote" target="_blank" rel="noopener" class="glass w-full max-w-md text-center">
+          <i class="fas fa-check-circle mr-2"></i> Vote on TopG
+        </a>
+        <a href="https://minecraft-mp.com/server/voidmc/vote/" target="_blank" rel="noopener" class="glass w-full max-w-md text-center">
+          <i class="fas fa-check-circle mr-2"></i> Vote on Minecraft-MP.com
+        </a>
+      </div>
     </div>
   </main>
 </body>

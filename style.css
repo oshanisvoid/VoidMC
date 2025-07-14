@@ -78,17 +78,7 @@ aside.left-sidebar {
 .sidebar-link:hover .tooltip {
   opacity: 1;
 }
-.skin-avatar {
-  width: 160px;
-  height: 320px;
-  object-fit: contain;
-  border-radius: 12px;
-  box-shadow: 0 0 20px rgba(51,242,250,0.6);
-  transition: transform 0.3s ease;
-  user-select: none;
-  pointer-events: none;
-  filter: drop-shadow(0 0 2px rgba(51,242,250,0.8));
-}
+
 
 
 main.content-area {

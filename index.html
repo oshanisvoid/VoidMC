@@ -74,6 +74,41 @@
       color: #19C7FE;
       transform: scale(1.15);
     }
+    .right-social-bar {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  z-index: 999;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #e5e7eb;
+  font-size: 22px;
+  transition: background 0.3s, color 0.3s, transform 0.3s;
+}
+
+.social-link:hover {
+  background: rgba(51, 242, 250, 0.2);
+  color: #33F2FA;
+  transform: translateX(-8px);
+}
+
+/* Optional: brand colors on hover */
+.social-link.twitter:hover   { background: rgba(29, 161, 242, 0.2); color: #1DA1F2; }
+.social-link.youtube:hover   { background: rgba(255, 0, 0, 0.2);    color: #FF0000; }
+.social-link.discord:hover   { background: rgba(114, 137, 218, 0.2); color: #7289DA; }
+.social-link.tiktok:hover    { background: rgba(0, 0, 0, 0.2);       /* monchrome better */ color: #69C9D0; }
+
 
     .tooltip {
       position: absolute;
@@ -180,35 +215,6 @@
         white-space: normal;
         word-break: break-word;
       }
-.right-social-bar {
-  position: fixed;
-  right: 20px;
-  top: 40%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  z-index: 999;
-}
-
-.right-social-bar a {
-  background: rgba(255, 255, 255, 0.08);
-  padding: 10px;
-  border-radius: 50%;
-  color: #e5e7eb;
-  font-size: 18px;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.right-social-bar a:hover {
-  color: #33F2FA;
-  transform: scale(1.2);
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
     }
   </style>
 </head>
